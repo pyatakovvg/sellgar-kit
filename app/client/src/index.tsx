@@ -1,5 +1,5 @@
 
-import { Application, Config, Router, Wrapper } from '@library/app';
+import { Application, Config, Router, Wrapper } from '@sellgar/app';
 import { getProfile, events as profileEvents } from '@widget/profile';
 
 import React from 'react';

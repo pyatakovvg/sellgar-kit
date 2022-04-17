@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@helper/utils": "0.0.1",
-    "@library/app": "0.0.1",
+    "@sellgar/app": "0.0.1",
     "@module/error": "0.0.1",
     "@module/main": "0.0.1",
     "@module/test": "0.0.1",
