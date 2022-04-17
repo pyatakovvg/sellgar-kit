@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
-    "@babel/core": "7.17.0",
-    "core-js": "3.21.1",
+    "@babel/core": "7.17.9",
+    "core-js": "3.22.0",
     "cross-env": "7.0.3",
     "resolve": "1.22.0"
   },
