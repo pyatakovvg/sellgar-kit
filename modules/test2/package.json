@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "name": "@module/test2",
+  "version": "0.0.1",
+  "description": "Utils",
+  "author": "Viktor Pyatakov <pyatakov.viktor@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "types": "lib",
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "create-d.ts": "tsc",
+    "build": "rm -drf ./lib && cross-env NODE_ENV=production babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files && npm run create-d.ts",
+    "start:dev": "cross-env NODE_ENV=development babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files --watch"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "18.0.0",
+    "react-router-dom": "6.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.17.6",
+    "@babel/core": "7.17.9",
+    "cross-env": "7.0.3",
+    "resolve": "1.22.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
+    ]
+  }
+}

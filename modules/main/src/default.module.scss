@@ -1,0 +1,24 @@
+
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}
+
+.content {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}
+
+.block {
+
+  display: block;
+  align-items: flex-start;
+
+  & + & {
+    margin: 10px 0 0;
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "private": true,
+  "name": "my-app",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "@helper/utils": "0.0.1",
+    "@library/app": "0.0.1",
+    "@package/request": "0.0.1",
+    "@wrapper/default": "0.0.1",
+    "@wrapper/navigate": "0.0.1",
+    "@widget/profile": "0.0.1",
+    "@module/main": "0.0.1",
+    "@module/test": "0.0.1",
+    "@module/test2": "0.0.1",
+    "@module/error": "0.0.1",
+    "@reduxjs/toolkit": "1.8.1",
+    "history": "5.3.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-redux": "7.2.8",
+    "react-router-dom": "6.3.0",
+    "web-vitals": "2.1.4"
+  },
+  "devDependencies": {
+    "sass": "1.50.0",
+    "react-scripts": "5.0.0",
+    "@types/node": "17.0.24",
+    "@types/react": "18.0.1",
+    "@types/react-dom": "18.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

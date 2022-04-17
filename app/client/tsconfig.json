@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["react-scripts"],
+    "outDir": "./lib",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src"
+  ]
+}
