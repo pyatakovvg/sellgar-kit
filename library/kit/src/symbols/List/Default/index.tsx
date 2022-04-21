@@ -22,7 +22,7 @@ interface IProps {
 }
 
 
-function ListDefault({ className, value, options, optionKey = 'id', optionValue = 'value', disabled, onClick }: IProps) {
+function ListDefault({ className, value, options, optionKey = 'id', optionValue = 'value', disabled, onClick }: IProps): JSX.Element | null {
   const wrapperClassName = React.useMemo(() => cn(styles['wrapper'], className), [className]);
 
   function handleClick(value: any) {

@@ -21,7 +21,7 @@ interface IProps {
 }
 
 
-function Factory({ form, ...rest }: IProps) {
+function Factory({ form, ...rest }: IProps): JSX.Element | null {
   switch(form) {
     case 'outline': return <OutlineButton {...rest} />
     case 'context': return <ContextButton {...rest} />
@@ -38,4 +38,4 @@ Factory.defaultProps = {
   disabled: false,
 };
 
-export default Factory;
+export default React.memo(Factory);

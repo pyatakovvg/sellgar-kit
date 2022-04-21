@@ -21,10 +21,10 @@ interface IProps {
 }
 
 
-function Factory({ type, ...rest }: IProps) {
+function Factory({ type, ...rest }: IProps): JSX.Element | null {
   switch(type) {
     default: return <DefaultList {...rest} />;
   }
 }
 
-export default Factory;
+export default React.memo(Factory);

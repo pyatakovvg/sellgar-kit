@@ -1,18 +1,24 @@
 
-import { Button, Input, List, Select } from '@sellgar/kit';
+import {Button, Input, List, Select, Checkbox, Text, Header, Label, Link, Image, Spinner, Logotype } from '@sellgar/kit';
 
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import styles from './default.module.scss';
 
 
 function Test(): React.ReactNode {
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState('Hello');
+  const [check, setCheck] = React.useState(true);
   const [listValue, setListValue] = React.useState<any>(null);
 
   return (
     <div className={styles['wrapper']}>
       <div className={styles['content']}>
+        <div className={styles['block']}>
+          <NavLink to={process.env['PUBLIC_URL'] + '/design'}>Design</NavLink>
+          <Logotype />
+        </div>
         <div className={styles['block']}>
           <Button>Default button</Button>
           <Button mode={'danger'}>Default button</Button>
@@ -32,12 +38,11 @@ function Test(): React.ReactNode {
           <Button form={'outline'} disabled>Outline button</Button>
         </div>
         <div className={styles['block']}>
-          <Input value={value} disabled type={'email'} name={'email'} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)} />
+          <Input value={value} disabled={listValue === 1} type={'email'} name={'email'} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)} />
         </div>
         <div className={styles['block']}>
           <Select
             clearable
-            mode={'primary'}
             value={listValue}
             options={[
               { id: 1, value: 'One value' },
@@ -51,13 +56,43 @@ function Test(): React.ReactNode {
           <List
             value={listValue}
             options={[
-              { id: 1, value: 'One value' },
-              { id: 2, value: 'Two value' },
+              { id: 1, value: 'Disabled input' },
+              { id: 2, value: 'Disabled' },
               { id: 3, value: 'Three value' },
             ]}
             onClick={setListValue}
           />
         </div>
+        <div className={styles['block']}>
+          <Checkbox type={'switch'} disabled={listValue === 2} value={check} onCheck={setCheck} />
+          <Checkbox disabled={listValue === 2} value={check} onCheck={setCheck} />
+          <Checkbox disabled={listValue === 3} value={check} onCheck={setCheck}>checkbox label</Checkbox>
+        </div>
+        <div className={styles['block']}>
+          <div className={styles['row']}>
+            <div className={styles['col']}>
+              <Text>Default text</Text>
+              <Text type={'strong'}>Strong text</Text>
+              <Text type={'description'}>Description text</Text>
+            </div>
+            <div className={styles['col']}>
+              <Header>Level 1</Header>
+              <Header level={2}>Level 2</Header>
+              <Header level={3}>Level 3</Header>
+              <Header level={4}>Level 4</Header>
+              <Header level={5}>Level 5</Header>
+            </div>
+            <div className={styles['col']}>
+              <Label>label for element</Label>
+              <Link href={'/'}>Default link</Link>
+              <Text>Link in <Link href={'#'}>default</Link> text</Text>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles['block']}>
+        <Spinner/>
+        <Image src={'https://st.depositphotos.com/1325441/1367/i/450/depositphotos_13671733-stock-photo-handsome-guy-with-dreamy-eyes.jpg'} />
       </div>
     </div>
   );

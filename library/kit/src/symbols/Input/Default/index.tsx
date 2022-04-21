@@ -23,7 +23,7 @@ interface IProps {
 }
 
 
-function PasswordInput({ className, type, mode, value, name, placeholder, autoFocus, disabled, onBlur, onFocus, onChange }: IProps) {
+function PasswordInput({ className, type, mode, value, name, placeholder, autoFocus, disabled, onBlur, onFocus, onChange }: IProps): JSX.Element | null {
   const [isFocus, setFocus] = React.useState<boolean>(false);
   const [isPlaceholder, setPlaceHolder] = React.useState<boolean>(false);
 
@@ -97,4 +97,4 @@ PasswordInput.defaultProps = {
   disabled: false,
 };
 
-export default React.memo(PasswordInput);
+export default PasswordInput;

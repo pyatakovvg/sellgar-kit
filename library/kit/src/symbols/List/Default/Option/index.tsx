@@ -13,7 +13,7 @@ interface IProps {
 }
 
 
-function Option({ isSelect, value, disabled, onClick }: IProps) {
+function Option({ isSelect, value, disabled, onClick }: IProps): JSX.Element | null {
   const wrapperClassName = React.useMemo(() => cn(styles['wrapper'], {
     [styles['disabled']]: disabled,
     [styles['selected']]: isSelect,

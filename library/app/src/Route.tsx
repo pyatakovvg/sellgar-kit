@@ -86,5 +86,4 @@ class Router implements IRouteClass {
   }
 }
 
-export { IRoute };
 export default Router;

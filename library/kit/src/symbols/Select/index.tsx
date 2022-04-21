@@ -27,10 +27,10 @@ interface IProps {
 }
 
 
-function Factory({ type, ...rest }: IProps) {
+function Factory({ type, ...rest }: IProps): JSX.Element | null {
   switch(type) {
     default: return <DefaultSelect {...rest} />;
   }
 }
 
-export default Factory;
+export default React.memo(Factory);

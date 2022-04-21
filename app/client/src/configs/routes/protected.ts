@@ -2,17 +2,13 @@
 const routes: Array<any> = [
   {
     path: '/',
+    wrapper: 'navigate',
     module: import('@module/main')
   },
   {
-    path: '/products',
+    path: '/design',
     wrapper: 'navigate',
-    module: import('@module/test2')
-  },
-  {
-    path: '/profile',
-    wrapper: 'navigate',
-    module: import('@module/test2')
+    module: import('@module/test')
   },
 ];
 

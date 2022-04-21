@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+import Header from './Header';
+
 import styles from './default.module.scss';
 
 
@@ -9,15 +11,22 @@ interface IProps {
 }
 
 
-function DefaultWrapper({ children }: IProps): React.ReactNode {
+function NavigateWrapper({ children }: IProps): JSX.Element {
   return (
     <div className={styles['wrapper']}>
-      <div>Wrapper navigate</div>
-      <div className={styles['content']}>
-        {children}
-      </div>
+      <header className={styles['header']}>
+        <Header />
+      </header>
+      <section className={styles['content']}>
+        {React.Children.map(children, (child) => (
+          React.cloneElement(child)
+        )) }
+      </section>
+      <footer className={styles['footer']}>
+
+      </footer>
     </div>
   );
 }
 
-export default DefaultWrapper;
+export default NavigateWrapper;

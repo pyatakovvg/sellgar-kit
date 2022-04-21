@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 
 import createStore from './store';
-import publicRoutes from "./configs/routes/public";
-import protectedRoutes from "./configs/routes/protected";
+import publicRoutes from './configs/routes/public';
+import protectedRoutes from './configs/routes/protected';
 
 import './styles/index.scss';
 
@@ -20,11 +20,10 @@ import './styles/index.scss';
     const app = new Application(config);
 
 
+    app.addLoader(import('./Loader'));
+
     app.addRouter(new Router(publicRoutes));
     app.addRouter(new Router(protectedRoutes, { protected: true }));
-
-
-    app.addLoader(import('./Loader'));
 
     app.addWrapper('default', new Wrapper(import('@wrapper/default')));
     app.addWrapper('navigate', new Wrapper(import('@wrapper/navigate')));
@@ -40,7 +39,7 @@ import './styles/index.scss';
 
     profileEvents.on('not-auth', () => {
       app.events.emit('init', true);
-      // app.react.navigate(process.env['PUBLIC_URL'] + '/sign-in');
+      app.react.navigate(process.env['PUBLIC_URL'] + '/sign-in');
     });
 
     profileEvents.on('error', (error) => {
@@ -56,7 +55,6 @@ import './styles/index.scss';
     }
 
     const root = ReactDOM.createRoot(selector);
-
     const AppView = app.createView();
 
     root.render(

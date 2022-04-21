@@ -11,7 +11,7 @@ interface IProps {
 }
 
 
-function Reset({ disabled, onClick }: IProps) {
+function Reset({ disabled, onClick }: IProps): JSX.Element | null {
   const wrapperClassName = React.useMemo(() => cn(styles['wrapper'], {
     [styles['disabled']]: disabled,
   }), [disabled]);
@@ -35,4 +35,4 @@ Reset.defaultProps = {
   disabled: false,
 };
 
-export default React.memo(Reset);
+export default Reset;

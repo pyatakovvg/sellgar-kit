@@ -1,14 +1,18 @@
 
 import React from 'react';
 
-import { IRoute } from './Route';
 
+type TRouteOption = IRouteOptions | null;
+
+interface IRoute {
+  path: string;
+  wrapper?: string;
+  module: Promise<any>;
+}
 
 interface IRouteOptions {
   protected: boolean;
 }
-
-type TRouteOption = IRouteOptions | null;
 
 interface IRouter {
   routes: Array<IRoute>;

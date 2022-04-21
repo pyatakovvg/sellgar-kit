@@ -9,6 +9,7 @@
   "dependencies": {
     "@helper/utils": "0.0.1",
     "@sellgar/app": "0.0.1",
+    "@sellgar/kit": "1.0.0",
     "@module/error": "0.0.1",
     "@module/main": "0.0.1",
     "@module/test": "0.0.1",

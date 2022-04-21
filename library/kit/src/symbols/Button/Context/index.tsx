@@ -18,7 +18,7 @@ interface IProps {
 }
 
 
-function ContextButton({ className, type, mode, children, disabled, onClick }: IProps) {
+function ContextButton({ className, type, mode, children, disabled, onClick }: IProps): JSX.Element | null {
   const buttonClassName = React.useMemo(() => cn(styles['button'], className, {
     [styles['mode--danger']]: mode === 'danger',
     [styles['mode--primary']]: mode === 'primary',

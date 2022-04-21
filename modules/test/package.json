@@ -20,7 +20,9 @@
     "build": "rm -drf ./lib && cross-env NODE_ENV=production babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files && npm run create-d.ts",
     "start:dev": "cross-env NODE_ENV=development babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@sellgar/designe": "1.0.0"
+  },
   "peerDependencies": {
     "react": "18.0.0",
     "react-router-dom": "6.3.0"

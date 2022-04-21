@@ -22,7 +22,7 @@ interface IProps {
 }
 
 
-function Factory({ type, ...rest }: IProps) {
+function Factory({ type, ...rest }: IProps): JSX.Element | null {
   switch(type) {
     case 'email': return <DefaultInput type={'email'} {...rest} />;
     case 'password': return <DefaultInput type={'password'} {...rest} />;
@@ -30,4 +30,4 @@ function Factory({ type, ...rest }: IProps) {
   }
 }
 
-export default Factory;
+export default React.memo(Factory);

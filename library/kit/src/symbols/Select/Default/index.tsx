@@ -28,16 +28,16 @@ interface IProps {
 }
 
 
-function useFoundOptionByKey(value: any, options: Array<any>, optionKey: string = '') {
+function useFoundOptionByKey(value: any, options: Array<any>, optionKey: string = ''): Array<any> | null {
   return React.useMemo(() => options.find((option) => option[optionKey] === value) || null, [value]);
 }
 
-function useGetValue(value: string, option: any, optionValue: string = '') {
+function useGetValue(value: string, option: any, optionValue: string = ''): string | null {
   return React.useMemo(() => option?.[optionValue] || null, [value]);
 }
 
 
-function DefaultSelect({ mode, value, options, optionKey, optionValue, placeholder, disabled, clearable, onFocus, onChange, onBlur }: IProps) {
+function DefaultSelect({ mode, value, options, optionKey, optionValue, placeholder, disabled, clearable, onFocus, onChange, onBlur }: IProps): JSX.Element | null {
   const wrapperRef = React.useRef<HTMLHeadingElement>(null);
   const [isFocus, setFocus] = React.useState(false);
 
