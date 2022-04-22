@@ -54,7 +54,7 @@ function Test(): React.ReactNode {
               <Product
                 uuid={'dffdgdfgdf'}
                 disabled
-                gallery={['https://st.depositphotos.com/1325441/1367/i/450/depositphotos_13671733-stock-photo-handsome-guy-with-dreamy-eyes.jpg']}
+                gallery={['https://cdn1.technopark.ru/technopark/photos_resized/product/248_248/544062/1_544062.jpg']}
                 title={'fhfghfhg'}
                 modes={[
                   {

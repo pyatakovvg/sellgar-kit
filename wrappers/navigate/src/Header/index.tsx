@@ -1,5 +1,5 @@
 
-import { Logotype, Navigate } from '@sellgar/kit';
+import { Logotype, Navigate, Button, Input } from '@sellgar/kit';
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -39,7 +39,16 @@ function Header(): JSX.Element {
       </div>
       <div className={styles['section']}>
         <div className={styles['control']}>
-
+          <Button>Каталог</Button>
+        </div>
+        <div className={styles['search']}>
+          <Input />
+        </div>
+        <div className={styles['profile']}>
+          <Button form={'outline'}>Войти</Button>
+        </div>
+        <div className={styles['bucket']}>
+          <Button form={'outline'}>Корзина</Button>
         </div>
       </div>
     </div>
