@@ -8,15 +8,16 @@ export {
   getProfile,
   signIn,
   signOut,
-} from './ducks/commands';
+} from './store/commands';
 
 export {
   selectInProcess,
   getProfileRequestSuccessAction
-} from './ducks/slice';
+} from './store/slice';
 
 export {
   resetStateAction,
-} from './ducks/slice';
+} from './store/slice';
 
-export { name, reducer } from './ducks/slice';
+export { default } from './view';
+export { name, reducer } from './store/slice';

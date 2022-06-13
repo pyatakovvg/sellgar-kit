@@ -5,7 +5,7 @@ type TCallback = {
 
 
 class Callback {
-  private app: any;
+  readonly app: any;
   readonly callbacks: TCallback = {};
 
   constructor(app: any) {
@@ -14,7 +14,7 @@ class Callback {
   }
 
   get(name: string) {
-    return this.callbacks[name];
+    return this.callbacks?.[name] ?? null;
   }
 
   set<N extends string, C>(name: N, cb: C) {
@@ -23,7 +23,9 @@ class Callback {
 
   exec<N extends string>(name: N) {
     const cb = this.get(name);
-    cb(this.app);
+    if (cb) {
+      cb(this.app);
+    }
   }
 }
 

@@ -15,7 +15,7 @@ function Default({ items }: IProps): JSX.Element {
   return (
     <div className={styles['wrapper']}>
       {items.map((item, index) => (
-        <Item key={index} active={false} {...item} />
+        <Item key={index} {...item} />
       ))}
     </div>
   );

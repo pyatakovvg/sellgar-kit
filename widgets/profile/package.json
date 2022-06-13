@@ -7,32 +7,28 @@
     "email": "viktor.pyatakov@pimpay.ru"
   },
   "main": "lib/index.js",
-  "types": "lib",
+  "module": "lib/index.js",
+  "types": "types",
   "scripts": {
-    "create-d.ts": "tsc",
-    "build": "rm -drf ./lib && cross-env NODE_ENV=production babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files && npm run create-d.ts",
+    "build:types": "tsc",
+    "build": "cross-env NODE_ENV=production babel ./src --out-dir ./lib --extensions '.ts,.tsx,.js,.jsx' --copy-files --no-copy-ignored",
     "start:dev": "cross-env NODE_ENV=development babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files --watch"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@helper/utils": "0.0.1",
-    "@reduxjs/toolkit": "1.8.1",
-    "package/request": "0.0.1"
+    "@package/request": "0.0.1",
+    "@reduxjs/toolkit": "1.8.2"
+  },
+  "peerDependencies": {
+    "classnames": "2.3.1",
+    "react": "18.1.0",
+    "react-redux": "8.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.17.6",
-    "@babel/core": "7.17.9",
-    "core-js": "3.22.0",
-    "cross-env": "7.0.3",
-    "resolve": "1.22.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "react-app",
-        {
-          "absoluteRuntime": false
-        }
-      ]
-    ]
+    "@babel/cli": "7.17.10",
+    "@babel/core": "7.18.2",
+    "@babel/preset-env": "7.18.2",
+    "@babel/preset-typescript": "7.17.12",
+    "cross-env": "7.0.3"
   }
 }

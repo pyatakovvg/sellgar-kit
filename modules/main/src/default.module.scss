@@ -4,36 +4,32 @@
   display: flex;
   flex-direction: column;
   flex: 1 0;
-  padding: 42px;
+  padding: 48px 0 84px;
+}
+
+.header {
+
+  display: block;
 }
 
 .content {
 
   display: flex;
-  flex-direction: column;
-  flex: 1 0;
-}
-
-.block {
-
-  display: block;
-  align-items: flex-start;
-
-  & + & {
-    margin: 24px 0 0;
-  }
-}
-
-.row {
-
-  display: flex;
   flex-direction: row;
   flex: 1 0;
+  margin: 32px 0 0;
 }
 
-.col {
+.aside {
+
+  display: block;
+  width: 260px;
+}
+
+.products {
 
   display: flex;
   flex-direction: column;
   flex: 1 0;
+  margin: 0 0 0 24px;
 }

@@ -1,11 +1,11 @@
 
-@import "@sellgar/theme";
+@import "~@library/theme";
 
 
 .content {
 
   display: block;
-  font-size: 24px;
+  font-size: 22px;
   color: $black;
   font-weight: $font-weight-bold;
 }

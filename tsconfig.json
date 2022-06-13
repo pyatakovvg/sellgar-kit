@@ -10,8 +10,7 @@
     "types": [
       "node",
       "react/next",
-      "react-dom/next",
-      "react-scripts",
+      "react-dom/next"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -28,9 +27,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
   ]
 }

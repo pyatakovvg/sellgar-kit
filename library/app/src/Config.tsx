@@ -1,5 +1,7 @@
 
-interface IConfig {}
+interface IConfig {
+  navigate: Array<any>;
+}
 
 
 class Config {

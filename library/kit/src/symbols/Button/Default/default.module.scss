@@ -1,13 +1,14 @@
 
-@import "@sellgar/theme";
+@import "~@library/theme";
 
 
 .button {
 
   display: inline-block;
   padding: 9px 32px;
-  font-size: 14px;
+  font-size: 13px;
   font-family: inherit;
+  font-weight: $font-weight-bold;
   color: $white;
   border-radius: 8px;
   cursor: pointer;
@@ -17,9 +18,9 @@
   &:disabled:hover,
   &:disabled:active {
 
-    border: 1px solid $gray;
-    background: $gray;
-    color: $gray-dark;
+    border: 1px solid $gray-light;
+    background: $gray-light;
+    color: $gray;
     cursor: default;
   }
 }

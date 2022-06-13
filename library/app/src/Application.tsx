@@ -1,9 +1,10 @@
 
 import { Events } from '@helper/utils';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import AppRoute from "./Route";
@@ -14,12 +15,23 @@ import Loader from './Loader';
 import Callback from './Callback';
 import IRoute from './Route';
 import AppReact from './React';
+import { Provider } from './helpers/context'
 
 
 type TWrapper = {
   [name: string]: Wrapper;
 }
 
+
+function ErrorFallback({ error, resetErrorBoundary }: any): JSX.Element {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  )
+}
 
 class Application {
   isInit: boolean = false;
@@ -83,10 +95,11 @@ class Application {
       const dispatch = useDispatch();
       const navigate = useNavigate();
 
-      useEffect(() => {
+      React.useEffect(() => {
         self.react.dispatch = dispatch;
         self.react.navigate = navigate;
       }, []);
+
       return null;
     }
   }
@@ -98,24 +111,34 @@ class Application {
 
     return function() {
       return (
-        <BrowserRouter>
-          <ReactGet />
-          <Routes>
-            {routes.map((route, index) => {
-              const RouteView = route.createView(self);
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+        >
+          <Provider value={{
+            routes,
+            config: self['config']['config'],
+            events: self['events'],
+          }}>
+            <BrowserRouter>
+              <ReactGet />
+              <Routes>
+                {routes.map((route, index) => {
+                  const RouteView = route.createView(self);
 
-              return (
-                <Route
-                  key={route['path'] + '_' + index}
-                  path={route['path']}
-                  element={(
-                    <RouteView />
-                  )}
-                />
-              );
-            })}
-          </Routes>
-        </BrowserRouter>
+                  return (
+                    <Route
+                      key={route['path'] + '_' + index}
+                      path={route['path']}
+                      element={(
+                        <RouteView />
+                      )}
+                    />
+                  );
+                })}
+              </Routes>
+            </BrowserRouter>
+          </Provider>
+        </ErrorBoundary>
       );
     }
   }

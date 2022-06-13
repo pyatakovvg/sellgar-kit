@@ -2,14 +2,12 @@
 const routes: Array<any> = [
   {
     path: '/sign-in',
-    module: import('@module/test')
+    wrapper: 'empty',
+    module: import('@module/sign-in')
   },
   {
-    path: '/sign-up',
-    module: import('@module/test')
-  },
-  {
-    path: '/error',
+    path: '*',
+    wrapper: 'empty',
     module: import('@module/error')
   },
 ];

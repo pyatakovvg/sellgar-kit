@@ -1,8 +1,17 @@
 
 import { Events } from '@helper/utils';
+import {
+  BaseError,
+  BadRequestError,
+  NotFoundError,
+  ServiceUnavailableError,
+  UnauthorizedError,
+  InternalServerError
+} from '@package/errors';
 
 import qs from "qs";
 import axios from "axios";
+import type { AxiosRequestConfig, CancelTokenSource } from "axios";
 
 
 interface IConfig {
@@ -26,7 +35,11 @@ export function config(config: IConfig) {
   };
 }
 
-export default async function(options: object) {
+export function createCancelToken(): CancelTokenSource {
+  return axios.CancelToken.source();
+}
+
+async function request(options: AxiosRequestConfig): Promise<any> {
   try {
     options = {
       ...defaultOptions,
@@ -50,14 +63,57 @@ export default async function(options: object) {
 
     return data;
   }
-  catch(error) {
+  catch(error: any) {
+    let InstanceError = null;
 
     if (axios.isCancel(error)) {
+      events.emit('cancel', error);
       return { success: true, data: null };
     }
 
-    events.emit('error', error);
+    if (error['response']) {
+      let { status, data } = error['response'];
 
-    throw new Error('error');
+      if (options['responseType'] === 'blob') {
+        data = await new Promise((resolve, reject) => {
+          let reader: any = new FileReader();
+
+          reader.onload = () => {
+            resolve(JSON.parse(reader['result']));
+          };
+          reader.onerror = () => {
+            reject(error);
+          };
+          reader.readAsText(error['response']['data']);
+        });
+      }
+
+      if (status === 400) {
+        InstanceError = new BadRequestError(data['error']);
+      }
+      else if (status === 401) {
+        InstanceError = new UnauthorizedError(data['error']);
+      }
+      else if (status === 404) {
+        InstanceError = new NotFoundError(data['error']);
+      }
+      else if (status === 500) {
+        InstanceError = new InternalServerError(data['error']);
+      }
+      else if (status === 503) {
+        InstanceError = new ServiceUnavailableError(data['error']);
+      }
+      else {
+        InstanceError = new BaseError(data?.['status'] ?? 500, data?.['error'] ?? { code: '1.0.0', message: 'Сервис временно не доступен' });
+      }
+    }
+    else {
+      InstanceError = new InternalServerError({ code: '1.1.0', message: 'Сервис временно не доступен' });
+    }
+
+    events.emit('error', InstanceError);
+    return Promise.reject(InstanceError);
   }
 }
+
+export default request;

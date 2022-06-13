@@ -1,6 +1,10 @@
 
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { name as pushReducerName, reducer as pushReducer } from '@package/push';
+import { name as dialogReducerName, reducer as dialogReducer } from '@package/dialog';
 import { name as profileReducerName, reducer as profileReducer } from '@widget/profile';
+
+import { reducer as formReducer } from 'redux-form';
 
 
 type TModule = {
@@ -24,6 +28,9 @@ async function createStore(app: any) {
   return configureStore({
     reducer: combineReducers({
       ...appModules,
+      'form': formReducer,
+      [pushReducerName]: pushReducer,
+      [dialogReducerName]: dialogReducer,
       [profileReducerName]: profileReducer,
     }),
   });

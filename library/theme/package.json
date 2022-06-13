@@ -1,6 +1,6 @@
 {
   "private": false,
-  "name": "@sellgar/theme",
+  "name": "@library/theme",
   "version": "0.0.1",
   "license": "MIT",
   "main": "./src/default.scss",
